@@ -19,11 +19,11 @@ queueMethods.enqueue = function (value) {
 
 queueMethods.dequeue = function () {
   if (this.storageKey - this.dequeueKey > 0) {
-    var lastElement = this.storage[this.dequeueKey];
-    delete lastElement;
+    var firstElement = this.storage[this.dequeueKey];
+    delete firstElement;
     this.dequeueKey++;
 
-    return lastElement;
+    return firstElement;
   }
 
 };
