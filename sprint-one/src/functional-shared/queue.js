@@ -24,7 +24,7 @@ queueMethods.dequeue = function() {
   // Dequeue it only if object storage has property
   if (this.storageKey - this.dequeueKey > 0) {
     var firstElement = this.storage[this.dequeueKey];
-    delete firstElement;
+    delete this.storage[this.dequeueKey];
     this.dequeueKey++;
     return firstElement;
   }

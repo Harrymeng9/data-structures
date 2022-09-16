@@ -21,7 +21,7 @@ stackMethods.push = function(value) {
 stackMethods.pop = function() {
   if (this.storageLength > 0) {
     var lastElement = this.storage[this.storageLength - 1];
-    delete lastElement;
+    delete this.storage[this.storageLength - 1];
     this.storageLength--;
     return lastElement;
   }
