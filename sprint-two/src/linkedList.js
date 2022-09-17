@@ -38,7 +38,7 @@ var LinkedList = function() {
 
   list.contains = function(target) {
     // Start with head, check value to see if matches target
-    debugger;
+    // debugger;
     var currNode = list.head;
     if (currNode.value === target) {
       return true;
@@ -68,5 +68,5 @@ var Node = function(value) {
 };
 
 /*
- * Complexity: What is the time complexity of the above functions?
+ * Complexity: What is the time complexity of the above functions? O(n)
  */
