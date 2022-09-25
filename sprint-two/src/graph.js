@@ -3,7 +3,7 @@
 // Instantiate a new graph
 var Graph = function () {
   // Use an object to represent the graph
-  this.g = {};
+  this._g = {};
   /*
   {1: [2,5],
    2: [3,5],
@@ -19,13 +19,13 @@ var Graph = function () {
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function (node) {
   var nodeString = node.toString();
-  this.g[nodeString] = [];
+  this._g[nodeString] = [];
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function (node) {
   var nodeString = node.toString();
-  return Object.keys(this.g).indexOf(nodeString) !== -1;
+  return Object.keys(this._g).indexOf(nodeString) !== -1;
 };
 
 
@@ -35,15 +35,15 @@ Graph.prototype.hasEdge = function (fromNode, toNode) {
   var fromNodeString = fromNode.toString();
   // Look in g for fromNode
   // If the list for fromNode contains toNode value, return true
-  return this.g[fromNodeString].includes(toNode);
+  return this._g[fromNodeString].includes(toNode);
 };
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function (fromNode, toNode) {
   var fromNodeString = fromNode.toString();
   var toNodeString = toNode.toString();
-  this.g[fromNodeString].push(toNode);
-  this.g[toNodeString].push(fromNode);
+  this._g[fromNodeString].push(toNode);
+  this._g[toNodeString].push(fromNode);
 };
 
 // Remove an edge between any two specified (by value) nodes.
@@ -51,11 +51,11 @@ Graph.prototype.removeEdge = function (fromNode, toNode) {
   var fromNodeString = fromNode.toString();
   var toNodeString = toNode.toString();
 
-  var removeFromNodeIndex = this.g[fromNodeString].indexOf(toNode);
-  this.g[fromNodeString].splice(removeFromNodeIndex, 1);
+  var removeFromNodeIndex = this._g[fromNodeString].indexOf(toNode);
+  this._g[fromNodeString].splice(removeFromNodeIndex, 1);
 
-  var removeToNodeIndex = this.g[toNodeString].indexOf(fromNode);
-  this.g[toNodeString].splice(removeToNodeIndex, 1);
+  var removeToNodeIndex = this._g[toNodeString].indexOf(fromNode);
+  this._g[toNodeString].splice(removeToNodeIndex, 1);
 
 };
 
@@ -67,18 +67,18 @@ Graph.prototype.removeNode = function (node) {
   var nodeString = node.toString();
   // this.removeEdge(node, 5);
 
-  for (var i = 0; i < this.g[nodeString].length; i++) {
-    this.removeEdge(this.g[nodeString][i], node);
+  for (var i = 0; i < this._g[nodeString].length; i++) {
+    this.removeEdge(this._g[nodeString][i], node);
   }
 
   // remove the node from g
-  delete this.g[nodeString];
+  delete this._g[nodeString];
 };
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function (cb) {
   // go through each of the nodes in g
-  for (var n in this.g) {
+  for (var n in this._g) {
   // apply cb function to each of the nodes
     cb(n);
   }

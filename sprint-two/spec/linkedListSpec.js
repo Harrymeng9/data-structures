@@ -52,4 +52,12 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it('should be empty when all nodes are removed', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.removeHead();
+    linkedList.removeHead();
+    expect(linkedList.head).to.equal(null);
+    expect(linkedList.tail).to.equal(null);
+  });
 });

@@ -12,7 +12,6 @@ var BinarySearchTree = function (value) {
 var BSTMethod = {};
 
 BSTMethod.insert = function (value) {
-  // debugger;
   if (value < this.value) {
     if (this.left === undefined) {
       this.left = new BinarySearchTree(value);

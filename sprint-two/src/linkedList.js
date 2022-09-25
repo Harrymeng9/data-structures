@@ -31,6 +31,11 @@ var LinkedList = function() {
     } else {
       // Update the head to point to previous head's next node, which is the new head
       list.head = list.head.next;
+      // If list.head is null, we removed the last node
+      if (list.head === null) {
+      // so we also have to update the tail to null
+        list.tail = null;
+      }
       // Return the previous head value
       return prevHead.value;
     }
